@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:26:09 by mlouis            #+#    #+#             */
-/*   Updated: 2025/09/25 17:24:20 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/09/29 17:45:48 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,10 @@ Contact::Contact(void)
 	return ;
 }
 
-Contact::Contact(std::string n, int p) : name(n), phone(p)
+Contact::Contact(std::string fn, std::string ln, std::string nick, int p, std::string s)
+				: firstname(fn), lastname(ln), nickname(nick), phone(p), secret(s)
 {
-	std::cout << "hello " << this->name << std::endl;
+	std::cout << this->firstname << " was added" << std::endl;
 	return ;
 }
 

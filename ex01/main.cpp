@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 19:03:38 by mlouis            #+#    #+#             */
-/*   Updated: 2025/09/29 17:14:27 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/09/29 17:52:42 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,25 @@ int	main(int argc, char *argv[])
 
 	if(opt.compare("ADD") == 0)
 	{
-		std::cout << "yay" << std::endl;
+		std::string	firstname;
+		std::string	lastname;
+		std::string	nickname;
+		int			phone;
+		std::string	secret;
+
+		std::cout << "First name: ";
+		std::cin >> firstname;
+		std::cout << "Last name: ";
+		std::cin >> lastname;
+		std::cout << "Nickname: ";
+		std::cin >> nickname;
+		std::cout << "Phone: ";
+		std::cin >> phone;
+		std::cout << "Darkest secret: ";
+		std::cin >> secret;
+		Contact c1(firstname, lastname, nickname, phone, secret);
+		pb.contacts[0] = c1;
+		std::cout << "fn= " << pb.contacts[0].firstname << " phone= " << pb.contacts[0].phone << " secret= " << pb.contacts[0].secret << std::endl;
 	}
 	else if(opt.compare("SEARCH") == 0)
 	{

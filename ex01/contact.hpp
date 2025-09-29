@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:51:24 by mlouis            #+#    #+#             */
-/*   Updated: 2025/09/29 17:16:45 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/09/29 17:40:12 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ class Contact
 		std::string	secret;
 
 		Contact(void);
-		Contact(std::string n, int p);
+		Contact(std::string fn, std::string ln, std::string nick, int p, std::string s);
 		~Contact(void);
 };
 
