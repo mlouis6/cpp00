@@ -5,27 +5,42 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/24 16:46:43 by mlouis            #+#    #+#             */
-/*   Updated: 2025/09/25 16:46:45 by mlouis           ###   ########.fr       */
+/*   Created: 2025/09/24 19:03:38 by mlouis            #+#    #+#             */
+/*   Updated: 2025/09/29 17:14:27 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <algorithm>
+#include "phonebook.hpp"
+#include "contact.hpp"
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
-	if (argc < 2)
+	Phonebook	pb;
+	// Contact		someone("John", 123456);
+	// std::cout << "phone= " << someone.phone << std::endl;
+	(void) argc; (void) argv;
+
+	std::string	opt;
+	std::cout << "What do you want to do? [ADD|SEARCH|EXIT]\n";
+	std::cin >> opt;
+
+	if(opt.compare("ADD") == 0)
 	{
-		std::cout << "* LOUD AND UNBEATABLE FEEDBACK NOISE *" << std::endl;
-		return (0);
+		std::cout << "yay" << std::endl;
 	}
-	for (int i = 1; i < argc; i++)
+	else if(opt.compare("SEARCH") == 0)
 	{
-		std::string str = argv[i];
-		std::transform(str.begin(), str.end(), str.begin(), ::toupper);
-		std::cout << str;
+		std::cout << "yay" << std::endl;
 	}
-	std::cout << std::endl;
+	else if(opt.compare("EXIT") == 0)
+	{
+		std::cout << "yay" << std::endl;
+	}
+	else
+	{
+		std::cout << "That option doesnt exist.." << std::endl;
+	}
+	
 	return (0);
 }
