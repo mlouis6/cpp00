@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:24:17 by mlouis            #+#    #+#             */
-/*   Updated: 2025/10/01 15:31:19 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/10/01 16:10:28 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,20 @@ void	Phonebook::displayInfo(std::string info, bool last)
 		std::cout << "|";
 }
 
+void	displayFullContact(Contact contact)
+{
+	std::cout << contact.firstname + "\n";
+	std::cout << contact.lastname + "\n";
+	std::cout << contact.nickname + "\n";
+	std::cout << contact.phone + "\n";
+	std::cout << contact.secret + "\n";
+}
+#include <sstream>
 void	Phonebook::searchContacts(void)
 {
-	for (int i = 0; i < 8; i++)
+	int	i;
+
+	for (i = 0; i < 8; i++)
 	{
 		if (this->contacts[i].firstname == "")
 			break ;
@@ -96,4 +107,21 @@ void	Phonebook::searchContacts(void)
 		displayInfo(this->contacts[i].lastname, false);
 		displayInfo(this->contacts[i].nickname, true);
 	}
+
+	std::string	line;
+	int			index;
+
+	// std::getline(std::cin, line);
+	// std::istringstream tmp(line);
+	// tmp >> index >> std::ws;
+	std::stringstream tmp;
+	std::getline(std::cin, line);
+	tmp.str(line);
+	tmp >> index;
+	if (!tmp || index >= i)
+	{
+		std::cout << "That index doesn't exit.\n";
+		return ;
+	}
+	displayFullContact(this->contacts[index]);
 }
