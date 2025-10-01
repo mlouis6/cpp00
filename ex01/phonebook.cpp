@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:24:17 by mlouis            #+#    #+#             */
-/*   Updated: 2025/10/01 14:11:22 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/10/01 15:31:19 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,18 @@ Phonebook::~Phonebook(void)
 	return ;
 }
 
-Contact	Phonebook::addContact(void)
+std::string	getInfo(std::string prompt)
+{
+	std::string	info;
+
+	std::cout << prompt;
+	std::getline(std::cin, info);
+	if (std::cin.eof())
+		return ("");
+	return (info);
+}
+
+void	Phonebook::addContact(void)
 {
 	std::string	firstname;
 	std::string	lastname;
@@ -33,22 +44,26 @@ Contact	Phonebook::addContact(void)
 	std::string	phone;
 	std::string	secret;
 	
-	std::cout << "First name: ";
-	std::getline(std::cin, firstname);
-	std::cout << "Last name: ";
-	std::getline(std::cin, lastname);
-	std::cout << "Nickname: ";
-	std::getline(std::cin, nickname);
-	std::cout << "Phone: ";
-	std::getline(std::cin, phone);
-	std::cout << "Darkest secret: ";
-	std::getline(std::cin, secret);
+	firstname = getInfo("First name: ");
+	if (firstname.empty())
+		return ;
+	lastname = getInfo("Last name: ");
+	if (lastname.empty())
+		return ;
+	nickname = getInfo("Nickname: ");
+	if (nickname.empty())
+		return ;
+	phone = getInfo("Phone: ");
+	if (phone.empty())
+		return ;
+	secret = getInfo("Darkest secret: ");
+	if (secret.empty())
+		return ;
 	Contact c1(firstname, lastname, nickname, phone, secret);
 	this->contacts[this->index] = c1;
 	++this->index;
 	if (this->index == 8)
 		this->index = 0;
-	return (c1);
 }
 
 #include <iomanip>
