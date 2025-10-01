@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 19:03:38 by mlouis            #+#    #+#             */
-/*   Updated: 2025/10/01 13:30:08 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/10/01 14:13:03 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	main(int argc, char *argv[])
 		std::string	opt;
 
 		std::cout << "What do you want to do? [ADD|SEARCH|EXIT]\n";
-		std::cin >> opt;
+		std::getline(std::cin, opt);
 		if(opt.compare("ADD") == 0)
 		{
 			pb.addContact();

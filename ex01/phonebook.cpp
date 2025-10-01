@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:24:17 by mlouis            #+#    #+#             */
-/*   Updated: 2025/10/01 13:59:25 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/10/01 14:11:22 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ Contact	Phonebook::addContact(void)
 	std::string	secret;
 	
 	std::cout << "First name: ";
-	std::cin >> firstname;
+	std::getline(std::cin, firstname);
 	std::cout << "Last name: ";
-	std::cin >> lastname;
+	std::getline(std::cin, lastname);
 	std::cout << "Nickname: ";
-	std::cin >> nickname;
+	std::getline(std::cin, nickname);
 	std::cout << "Phone: ";
-	std::cin >> phone;
+	std::getline(std::cin, phone);
 	std::cout << "Darkest secret: ";
-	std::cin >> secret;
+	std::getline(std::cin, secret);
 	Contact c1(firstname, lastname, nickname, phone, secret);
 	this->contacts[this->index] = c1;
 	++this->index;
