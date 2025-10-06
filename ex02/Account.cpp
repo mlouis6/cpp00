@@ -6,37 +6,38 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/01 16:17:59 by mlouis            #+#    #+#             */
-/*   Updated: 2025/10/06 18:14:53 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/10/06 18:34:13 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Account.hpp"
 #include <iostream>
 
-static int _nbAccounts = 0;
-static int	_totalAmount = 0;
-static int	_totalNbDeposits = 0;
-static int	_totalNbWithdrawals = 0;
+int	Account::_nbAccounts = 0;
+int	Account::_totalAmount = 0;
+int	Account::_totalNbDeposits = 0;
+int	Account::_totalNbWithdrawals = 0;
+
 // static int	_amount = 0;
 // static int	_nbDeposits = 0;
 // static int	_nbWithdrawals = 0;
 
-static int	getNbAccounts(void)
+int	Account::getNbAccounts(void)
 {
 	return (_nbAccounts);
 }
 
-static int	getTotalAmount(void)
+int	Account::getTotalAmount(void)
 {
 	return (_totalAmount);
 }
 
-static int	getNbDeposits(void)
+int	Account::getNbDeposits(void)
 {
 	return (_totalNbDeposits);
 }
 
-static int	getNbWithdrawals(void)
+int	Account::getNbWithdrawals(void)
 {
 	return (_totalNbWithdrawals);
 }
@@ -53,9 +54,17 @@ void	Account::displayAccountsInfos(void)
 	std::cout << "withdrawals:" << getNbWithdrawals() << "\n";
 }
 
+// Account::Account(void)
+// {
+// 	static int	_nbAccounts = 0;
+// 	static int	_totalAmount = 0;
+// 	static int	_totalNbDeposits = 0;
+// 	static int	_totalNbWithdrawals = 0;
+// }
+
 Account::Account(int initial_deposit) : _amount(initial_deposit)
 {
-	++_nbAccounts;
+	_nbAccounts++;
 	_totalAmount += initial_deposit;
 	this->_nbDeposits = 0;
 	this->_nbWithdrawals = 0;
@@ -76,8 +85,8 @@ void	Account::makeDeposit(int deposit)
 {
 	this->_nbDeposits++;
 	this->_amount += deposit;
-	_totalAmount += deposit;
-	_totalNbDeposits++;
+	_totalAmount = getTotalAmount() + deposit;
+	_totalNbDeposits = getNbDeposits() + 1;
 }
 
 bool	Account::makeWithdrawal(int withdrawal)
@@ -92,12 +101,13 @@ bool	Account::makeWithdrawal(int withdrawal)
 }
 
 #include <ctime>
-static void	_displayTimestamp(void)
+void	Account::_displayTimestamp(void)
 {
 	std::time_t result = std::time(NULL);
 	std::cout << "[" << result << "] ";
 }
-void	displayStatus(void)
+
+void	Account::displayStatus(void) const
 {
 	_displayTimestamp();
 	std::cout << "accounts:" << getNbAccounts() << ";";
