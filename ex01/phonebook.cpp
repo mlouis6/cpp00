@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:24:17 by mlouis            #+#    #+#             */
-/*   Updated: 2025/10/01 16:10:28 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/10/06 17:29:33 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,9 +111,6 @@ void	Phonebook::searchContacts(void)
 	std::string	line;
 	int			index;
 
-	// std::getline(std::cin, line);
-	// std::istringstream tmp(line);
-	// tmp >> index >> std::ws;
 	std::stringstream tmp;
 	std::getline(std::cin, line);
 	tmp.str(line);
@@ -124,4 +121,5 @@ void	Phonebook::searchContacts(void)
 		return ;
 	}
 	displayFullContact(this->contacts[index]);
+	//TODO: refactor
 }
