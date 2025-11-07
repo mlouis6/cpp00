@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:26:09 by mlouis            #+#    #+#             */
-/*   Updated: 2025/10/01 13:26:32 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/11/07 11:26:16 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ Contact::Contact(void)
 }
 
 Contact::Contact(std::string fn, std::string ln, std::string nick, std::string p, std::string s)
-				: firstname(fn), lastname(ln), nickname(nick), phone(p), secret(s)
+				: _firstname(fn), _lastname(ln), _nickname(nick), _phone(p), _secret(s)
 {
-	std::cout << this->firstname << " was added" << std::endl;
+	std::cout << getFirstname() << " was added" << std::endl;
 	return ;
 }
 
@@ -29,3 +29,29 @@ Contact::~Contact(void)
 {
 	return ;
 }
+
+std::string	Contact::getFirstname(void)
+{
+	return (_firstname);
+}
+
+std::string	Contact::getLastname(void)
+{
+	return (_lastname);
+}
+
+std::string	Contact::getNickname(void)
+{
+	return (_nickname);
+}
+
+std::string	Contact::getPhone(void)
+{
+	return (_phone);
+}
+
+std::string	Contact::getSecret(void)
+{
+	return (_secret);
+}
+

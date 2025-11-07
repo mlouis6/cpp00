@@ -6,11 +6,11 @@
 #    By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/24 17:14:54 by mlouis            #+#    #+#              #
-#    Updated: 2025/10/06 21:24:05 by mlouis           ###   ########.fr        #
+#    Updated: 2025/11/07 13:43:49 by mlouis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY = all clean fclean re fs debug
+.PHONY = all clean fclean re
 
 NAME = megaphone.out
 CC = c++

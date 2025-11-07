@@ -6,13 +6,12 @@
 #    By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/24 17:56:19 by mlouis            #+#    #+#              #
-#    Updated: 2025/10/06 21:24:36 by mlouis           ###   ########.fr        #
+#    Updated: 2025/11/07 13:43:41 by mlouis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY = all clean fclean re fs debug
+.PHONY = all clean fclean re
 
-# DEPS = $(OBJ:.o=.d)
 NAME = phonebook.out
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98

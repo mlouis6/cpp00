@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 19:03:38 by mlouis            #+#    #+#             */
-/*   Updated: 2025/10/01 15:31:56 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/11/07 13:41:37 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,9 @@
 #include "phonebook.hpp"
 #include "contact.hpp"
 
-
-
-int	main(int argc, char *argv[])
+int	main(void)
 {
 	Phonebook	pb;
-	(void) argc; (void) argv;
 
 	while (!std::cin.eof())
 	{
@@ -29,10 +26,7 @@ int	main(int argc, char *argv[])
 
 		std::getline(std::cin, opt);
 		if (std::cin.eof())
-		{
-			std::cout << "End of file detected" << std::endl;
 			break ;
-		}
 		if(opt.compare("ADD") == 0)
 			pb.addContact();
 		else if(opt.compare("SEARCH") == 0)

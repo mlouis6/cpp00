@@ -6,22 +6,24 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:24:17 by mlouis            #+#    #+#             */
-/*   Updated: 2025/10/06 17:29:33 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/11/07 14:16:10 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
+#include <iomanip>
+#include <sstream>
 #include "phonebook.hpp"
 
 Phonebook::Phonebook(void)
 {
-	this->index = 0;
+	index = 0;
 	return ;
 }
 
 Phonebook::~Phonebook(void)
 {
-	std::cout << "Bye" << std::endl;
 	return ;
 }
 
@@ -59,14 +61,13 @@ void	Phonebook::addContact(void)
 	secret = getInfo("Darkest secret: ");
 	if (secret.empty())
 		return ;
-	Contact c1(firstname, lastname, nickname, phone, secret);
-	this->contacts[this->index] = c1;
-	++this->index;
-	if (this->index == 8)
-		this->index = 0;
+	Contact contact(firstname, lastname, nickname, phone, secret);
+	contacts[index] = contact;
+	++index;
+	if (index == 8)
+		index = 0;
 }
 
-#include <iomanip>
 void	Phonebook::displayInfo(std::string info, bool last)
 {
 	std::cout << std::setw(10);
@@ -86,40 +87,44 @@ void	Phonebook::displayInfo(std::string info, bool last)
 
 void	displayFullContact(Contact contact)
 {
-	std::cout << contact.firstname + "\n";
-	std::cout << contact.lastname + "\n";
-	std::cout << contact.nickname + "\n";
-	std::cout << contact.phone + "\n";
-	std::cout << contact.secret + "\n";
+	std::cout << contact.getFirstname() + "\n";
+	std::cout << contact.getLastname() + "\n";
+	std::cout << contact.getNickname() + "\n";
+	std::cout << contact.getPhone() + "\n";
+	std::cout << contact.getSecret() + "\n";
 }
-#include <sstream>
-void	Phonebook::searchContacts(void)
+
+int	Phonebook::listContacts(void)
 {
 	int	i;
 
-	for (i = 0; i < 8; i++)
+	i = 0;
+	while (i < 8)
 	{
-		if (this->contacts[i].firstname == "")
+		if (contacts[i].getFirstname().empty())
 			break ;
 		std::cout << std::setw(10);
 		std::cout << i << "|";
-		displayInfo(this->contacts[i].firstname, false);
-		displayInfo(this->contacts[i].lastname, false);
-		displayInfo(this->contacts[i].nickname, true);
+		displayInfo(contacts[i].getFirstname(), false);
+		displayInfo(contacts[i].getLastname(), false);
+		displayInfo(contacts[i].getNickname(), true);
+		++i;
 	}
+	return (i);
+}
 
+void	Phonebook::searchContacts(void)
+{
 	std::string	line;
 	int			index;
+	int			nb_contacts;
 
+	nb_contacts = listContacts();
 	std::stringstream tmp;
 	std::getline(std::cin, line);
 	tmp.str(line);
 	tmp >> index;
-	if (!tmp || index >= i)
-	{
-		std::cout << "That index doesn't exit.\n";
+	if (!tmp || index >= nb_contacts)
 		return ;
-	}
-	displayFullContact(this->contacts[index]);
-	//TODO: refactor
+	displayFullContact(contacts[index]);
 }
