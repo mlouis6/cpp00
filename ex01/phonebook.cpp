@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:24:17 by mlouis            #+#    #+#             */
-/*   Updated: 2025/11/07 14:16:10 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/11/14 13:02:21 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <string>
 #include <iomanip>
 #include <sstream>
+#include <cctype>
 #include "phonebook.hpp"
 
 Phonebook::Phonebook(void)
@@ -27,15 +28,35 @@ Phonebook::~Phonebook(void)
 	return ;
 }
 
-std::string	getInfo(std::string prompt)
+namespace utils
 {
-	std::string	info;
+	bool	allPrintable(const std::string& str)
+	{
+		for (size_t i = 0 ; i < str.length() ; i++)
+		{
+			if (!std::isprint(str[i]))
+				return (false);
+		}
+		return (true);
+	}
+}
 
-	std::cout << prompt;
-	std::getline(std::cin, info);
-	if (std::cin.eof())
-		return ("");
-	return (info);
+bool	Phonebook::addLoop(std::string& str, const std::string& prompt)
+{
+	while (1)
+	{
+		std::cout << prompt;
+		std::getline(std::cin, str);
+		if (std::cin.eof())
+			return (false) ;
+		if (str.empty() || !utils::allPrintable(str))
+		{
+			std::cout << "You need to enter printable characters\n";
+			continue ;
+		}
+		break ;
+	}
+	return (true);
 }
 
 void	Phonebook::addContact(void)
@@ -46,20 +67,15 @@ void	Phonebook::addContact(void)
 	std::string	phone;
 	std::string	secret;
 	
-	firstname = getInfo("First name: ");
-	if (firstname.empty())
+	if (!addLoop(firstname, "First name: "))
 		return ;
-	lastname = getInfo("Last name: ");
-	if (lastname.empty())
+	if (!addLoop(lastname, "Last name: "))
 		return ;
-	nickname = getInfo("Nickname: ");
-	if (nickname.empty())
+	if (!addLoop(nickname, "Nickname: "))
 		return ;
-	phone = getInfo("Phone: ");
-	if (phone.empty())
+	if (!addLoop(phone, "Phone: "))
 		return ;
-	secret = getInfo("Darkest secret: ");
-	if (secret.empty())
+	if (!addLoop(secret, "Secret: "))
 		return ;
 	Contact contact(firstname, lastname, nickname, phone, secret);
 	contacts[index] = contact;
@@ -85,7 +101,7 @@ void	Phonebook::displayInfo(std::string info, bool last)
 		std::cout << "|";
 }
 
-void	displayFullContact(Contact contact)
+void	displayFullContact(const Contact contact)
 {
 	std::cout << contact.getFirstname() + "\n";
 	std::cout << contact.getLastname() + "\n";
@@ -104,7 +120,7 @@ int	Phonebook::listContacts(void)
 		if (contacts[i].getFirstname().empty())
 			break ;
 		std::cout << std::setw(10);
-		std::cout << i << "|";
+		std::cout << i + 1 << "|";
 		displayInfo(contacts[i].getFirstname(), false);
 		displayInfo(contacts[i].getLastname(), false);
 		displayInfo(contacts[i].getNickname(), true);
@@ -120,11 +136,18 @@ void	Phonebook::searchContacts(void)
 	int			nb_contacts;
 
 	nb_contacts = listContacts();
-	std::stringstream tmp;
-	std::getline(std::cin, line);
-	tmp.str(line);
-	tmp >> index;
-	if (!tmp || index >= nb_contacts)
-		return ;
-	displayFullContact(contacts[index]);
+	while (1)
+	{
+		std::stringstream tmp;
+		std::getline(std::cin, line);
+		tmp.str(line);
+		tmp >> index;
+		if (!tmp || !tmp.eof() || tmp.fail() || index == 0 || index > nb_contacts)
+		{
+			std::cout << "Enter a number from the search list\n";
+			continue ;
+		}
+		break ;
+	}
+	displayFullContact(contacts[index - 1]);
 }

@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:26:09 by mlouis            #+#    #+#             */
-/*   Updated: 2025/11/07 11:26:16 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/11/14 11:20:37 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,27 +30,27 @@ Contact::~Contact(void)
 	return ;
 }
 
-std::string	Contact::getFirstname(void)
+std::string	Contact::getFirstname(void) const
 {
 	return (_firstname);
 }
 
-std::string	Contact::getLastname(void)
+std::string	Contact::getLastname(void) const
 {
 	return (_lastname);
 }
 
-std::string	Contact::getNickname(void)
+std::string	Contact::getNickname(void) const
 {
 	return (_nickname);
 }
 
-std::string	Contact::getPhone(void)
+std::string	Contact::getPhone(void) const
 {
 	return (_phone);
 }
 
-std::string	Contact::getSecret(void)
+std::string	Contact::getSecret(void) const
 {
 	return (_secret);
 }

@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 19:03:38 by mlouis            #+#    #+#             */
-/*   Updated: 2025/11/07 13:41:37 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/11/14 09:41:02 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,11 @@ int	main(void)
 		std::getline(std::cin, opt);
 		if (std::cin.eof())
 			break ;
-		if(opt.compare("ADD") == 0)
+		if(opt == "ADD")
 			pb.addContact();
-		else if(opt.compare("SEARCH") == 0)
+		else if(opt == "SEARCH")
 			pb.searchContacts();
-		else if(opt.compare("EXIT") == 0)
+		else if(opt == "EXIT")
 			break ;
 	}
 	return (0);
