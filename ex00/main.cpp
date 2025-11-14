@@ -6,7 +6,7 @@
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 16:46:43 by mlouis            #+#    #+#             */
-/*   Updated: 2025/10/01 17:28:29 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/11/10 10:54:43 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 {
 	if (argc < 2)
 	{
-		std::cout << "* LOUD AND UNBEATABLE FEEDBACK NOISE *" << std::endl;
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *" << std::endl;
 		return (0);
 	}
 	for (int i = 1; i < argc; i++)
