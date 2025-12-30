@@ -1,19 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   Phonebook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/25 15:19:35 by mlouis            #+#    #+#             */
-/*   Updated: 2025/11/14 13:00:56 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/12/30 12:01:08 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_H
 # define PHONEBOOK_H
 
-# include "contact.hpp"
+# include "Contact.hpp"
 
 class Phonebook
 {

@@ -6,7 +6,7 @@
 #    By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/24 17:56:19 by mlouis            #+#    #+#              #
-#    Updated: 2025/12/27 14:36:19 by mlouis           ###   ########.fr        #
+#    Updated: 2025/12/30 12:01:46 by mlouis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ NAME = phonebook.out
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRCS = main.cpp contact.cpp phonebook.cpp
-INCS = contact.hpp phonebook.hpp
+SRCS = main.cpp Contact.cpp Phonebook.cpp
+INCS = Contact.hpp Phonebook.hpp
 OBJS = $(SRCS:%.cpp=%.o)
 
 all: $(NAME)

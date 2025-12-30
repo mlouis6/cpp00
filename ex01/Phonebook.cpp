@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   Phonebook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/24 17:24:17 by mlouis            #+#    #+#             */
-/*   Updated: 2025/11/14 13:02:21 by mlouis           ###   ########.fr       */
+/*   Updated: 2025/12/30 12:02:29 by mlouis           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <iomanip>
 #include <sstream>
 #include <cctype>
-#include "phonebook.hpp"
+#include "Phonebook.hpp"
 
 Phonebook::Phonebook(void)
 {
@@ -139,10 +139,11 @@ void	Phonebook::searchContacts(void)
 	while (1)
 	{
 		std::stringstream tmp;
-		std::getline(std::cin, line);
+		if (!std::getline(std::cin, line))
+			return ;
 		tmp.str(line);
 		tmp >> index;
-		if (!tmp || !tmp.eof() || tmp.fail() || index == 0 || index > nb_contacts)
+		if (!tmp || !tmp.eof() || tmp.fail() || index <= 0 || index > nb_contacts)
 		{
 			std::cout << "Enter a number from the search list\n";
 			continue ;
