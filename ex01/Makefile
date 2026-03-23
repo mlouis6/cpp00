@@ -6,11 +6,11 @@
 #    By: mlouis <mlouis@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/24 17:56:19 by mlouis            #+#    #+#              #
-#    Updated: 2026/01/20 11:46:12 by mlouis           ###   ########.fr        #
+#    Updated: 2026/01/26 14:13:20 by mlouis           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-.PHONY = all clean fclean re
+.PHONY: all clean fclean re
 
 NAME := phonebook.out
 
